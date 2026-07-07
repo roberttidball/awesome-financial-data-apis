@@ -33,6 +33,7 @@
 | Alpha Vantage | ✅ 25 req/day | ❌ (15-min delay) | ✅ | ✅ | ✅ | 🟢 Active |
 | Polygon.io | ✅ Limited | ✅ (paid) | ✅ (paid) | ❌ | ✅ | 🟢 Active |
 | FRED (St. Louis Fed) | ✅ Unlimited | N/A | ❌ | ✅ | ✅ | 🟢 Active |
+| FXMacroData | ✅ Public USD endpoints | N/A | ❌ | ✅ | ✅ | 🟢 Active |
 | yfinance (Yahoo) | ✅ Unofficial | ❌ | ✅ | ❌ | ✅ | 🟡 Unstable |
 | SEC EDGAR | ✅ Unlimited | N/A | ✅ | ❌ | ✅ | 🟢 Active |
 | Tiingo | ✅ 500 req/hour | ❌ | ✅ | ❌ | ✅ | 🟢 Active |
@@ -223,6 +224,14 @@ headers = {'Content-type': 'application/json'}
 data = json.dumps({"seriesid": ["CUUR0000SA0", "CWUR0000SA0"], "startyear": "2020", "endyear": "2026"})
 resp = requests.post('https://api.bls.gov/publicAPI/v2/timeseries/data/', data=data, headers=headers)
 ```
+
+---
+
+**[FXMacroData](https://fxmacrodata.com/api-docs)**
+- **Free**: Public USD macro endpoints without an API key; broader multi-currency and premium datasets use API key access
+- **Data**: Macroeconomic indicators, FX rates, release calendars, central-bank decisions, COT positioning, commodities, and bond-yield context
+- **Python**: `pip install fxmacrodata`
+- **Note**: Built for FX macro workflows and AI/MCP integrations rather than tick-level market data.
 
 ---
 

@@ -33,7 +33,7 @@
 | Alpha Vantage | ✅ 25 req/day | ❌ (15-min delay) | ✅ | ✅ | ✅ | 🟢 Active |
 | Polygon.io | ✅ Limited | ✅ (paid) | ✅ (paid) | ❌ | ✅ | 🟢 Active |
 | FRED (St. Louis Fed) | ✅ Unlimited | N/A | ❌ | ✅ | ✅ | 🟢 Active |
-| FXMacroData | ✅ Public USD endpoints | N/A | ❌ | ✅ | ✅ | 🟢 Active |
+| FXMacroData | ✅ USD no-key access | N/A | ❌ | ✅ | ✅ | 🟢 Active |
 | yfinance (Yahoo) | ✅ Unofficial | ❌ | ✅ | ❌ | ✅ | 🟡 Unstable |
 | SEC EDGAR | ✅ Unlimited | N/A | ✅ | ❌ | ✅ | 🟢 Active |
 | Tiingo | ✅ 500 req/hour | ❌ | ✅ | ❌ | ✅ | 🟢 Active |
@@ -227,11 +227,17 @@ resp = requests.post('https://api.bls.gov/publicAPI/v2/timeseries/data/', data=d
 
 ---
 
-**[FXMacroData](https://fxmacrodata.com/api-docs)**
-- **Free**: Public USD macro endpoints without an API key; broader multi-currency and premium datasets use API key access
+**[FXMacroData](https://fxmacrodata.com/documentation/reference)**
+- **Free**: Catalogue and release-calendar endpoints require no key; USD macro history supports up to 100 no-key requests/day
 - **Data**: Macroeconomic indicators, FX rates, release calendars, central-bank decisions, COT positioning, commodities, and bond-yield context
 - **Python**: `pip install fxmacrodata`
-- **Note**: Built for FX macro workflows and AI/MCP integrations rather than tick-level market data.
+- **Note**: Verified 2026-08 with Python 3.12 and `fxmacrodata` 1.2.1 against the public USD catalogue, calendar, and inflation endpoints. FX rates and other protected datasets require API-key access.
+
+```python
+from fxmacrodata import Client
+
+calendar = Client().get_calendar("usd")
+```
 
 ---
 
